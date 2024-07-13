@@ -2,12 +2,14 @@ const express=require('express')
 const app=express();
 const db = require('./db');
 const menuItem=require('./models/menuItem');
+require('dotenv').config();
 const bodyParser=require('body-parser');
 app.use(bodyParser.json());// req body
+const PORT=process.env.PORT || 3000;
 
-// app.get('/',function(req,res){
-//     res.send('welcome to my server how i can response you ?')
-// })
+app.get('/',function(req,res){
+    res.send('welcome to my server how i can response you ?')
+})
 
 // app.get('/chicken',(req,res)=>{
 //     res.send('sure sir ,i would love to serve chicken ')
@@ -25,6 +27,8 @@ app.use(bodyParser.json());// req body
  const menuItemroutes=require('./routes/menuItemroutes');
  app.use('/person',personroutes);
  app.use('/menuItem',menuItemroutes);
+
+
 
 app.listen(3000,()=>{
     console.log('listening on port 3000')
